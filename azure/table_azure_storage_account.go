@@ -386,7 +386,7 @@ func tableAzureStorageAccount(_ context.Context) *plugin.Table {
 				Name:        "resource_group",
 				Description: ColumnDescriptionResourceGroup,
 				Type:        proto.ColumnType_STRING,
-				Transform:   transform.FromField("ResourceGroup").Transform(toLower),
+				Transform:   transform.FromField("ResourceGroup").Transform(transform.ToLower),
 			},
 			{
 				Name:        "subscription_id",
