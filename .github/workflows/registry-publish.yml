@@ -77,6 +77,15 @@ jobs:
             exit 1
           fi
 
+      - name: Increase swapfile
+        run: |
+          sudo swapoff -a
+          sudo fallocate -l 15G /swapfile
+          sudo chmod 600 /swapfile
+          sudo mkswap /swapfile
+          sudo swapon /swapfile
+          sudo swapon --show
+
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v2
         with:
@@ -117,7 +126,7 @@ jobs:
   publish-deploy:
     name: Publish and Deploy
     runs-on:
-      labels: ubuntu_4_core
+      group: large-runners
     needs:
       - build
 
@@ -253,7 +262,7 @@ jobs:
   tag-versions:
     name: Set Version tags
     runs-on:
-      labels: ubuntu_4_core
+      group: large-runners
     needs:
       - publish-deploy
 
