@@ -237,7 +237,7 @@ func extractVirtualMachinesForAvailabilitySet(_ context.Context, d *transform.Tr
 	availabilitySet := d.HydrateItem.(compute.AvailabilitySet)
 	var properties []map[string]interface{}
 
-	if availabilitySet.AvailabilitySetProperties != nil && availabilitySet.AvailabilitySetProperties.VirtualMachines != nil {
+	if availabilitySet.AvailabilitySetProperties != nil && availabilitySet.VirtualMachines != nil {
 		vmProperies := availabilitySet.AvailabilitySetProperties
 		for _, i := range *vmProperies.VirtualMachines {
 			objectMap := make(map[string]interface{})
@@ -255,7 +255,7 @@ func extractStatusForAvailabilitySet(_ context.Context, d *transform.TransformDa
 	availabilitySet := d.HydrateItem.(compute.AvailabilitySet)
 	var properties []map[string]interface{}
 
-	if availabilitySet.AvailabilitySetProperties != nil && availabilitySet.AvailabilitySetProperties.Statuses != nil {
+	if availabilitySet.AvailabilitySetProperties != nil && availabilitySet.Statuses != nil {
 		properies := availabilitySet.AvailabilitySetProperties
 		for _, i := range *properies.Statuses {
 			objectMap := make(map[string]interface{})

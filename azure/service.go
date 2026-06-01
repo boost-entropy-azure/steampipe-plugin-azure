@@ -134,7 +134,7 @@ func GetNewSessionUpdated(ctx context.Context, d *plugin.QueryData) (session *Se
 
 	// Retry policy
 	retryRules := getRetryRules(d.Connection)
-	clientOptions.ClientOptions.Retry = cloudPolicy.RetryOptions{
+	clientOptions.Retry = cloudPolicy.RetryOptions{
 		MaxRetries: int32(*retryRules.MaxErrorRetryAttempts),
 		RetryDelay: *retryRules.MinErrorRetryDelay,
 	}
@@ -284,7 +284,7 @@ func getSubscriptionFromCLI(resource string) (*subscription, error) {
 	const azureCLIDefaultPath = "/bin:/sbin:/usr/bin:/usr/local/bin"
 
 	// Validate resource, since it gets sent as a command line argument to Azure CLI
-	const invalidResourceErrorTemplate = "Resource %s is not in expected format. Only alphanumeric characters, [dot], [colon], [hyphen], and [forward slash] are allowed."
+	const invalidResourceErrorTemplate = "resource %s is not in expected format. Only alphanumeric characters, [dot], [colon], [hyphen], and [forward slash] are allowed"
 	match, err := regexp.MatchString("^[0-9a-zA-Z-.:/]+$", resource)
 	if err != nil {
 		return nil, err
@@ -312,7 +312,7 @@ func getSubscriptionFromCLI(resource string) (*subscription, error) {
 
 	output, err := cliCmd.Output()
 	if err != nil {
-		return nil, fmt.Errorf("Invoking Azure CLI failed with the following error: %v", err)
+		return nil, fmt.Errorf("invoking Azure CLI failed with the following error: %v", err)
 	}
 
 	var tokenResponse map[string]interface{}
@@ -468,7 +468,7 @@ func GetNewSession(ctx context.Context, d *plugin.QueryData, tokenAudience strin
 			logger.Error("GetNewSession", "Get token from Azure CLI error", err)
 			// Check if the password was changed and the session token is stored in the system, or if the CLI is outdated
 			if strings.Contains(err.Error(), "invalid_grant") {
-				return nil, fmt.Errorf("ValidationError: The credential data used by the CLI has expired because you might have changed or reset the password. Please clear your browser's cookies and run 'az login'.")
+				return nil, fmt.Errorf("ValidationError: The credential data used by the CLI has expired because you might have changed or reset the password. Please clear your browser's cookies and run 'az login'")
 			}
 			return nil, err
 		}

@@ -361,8 +361,8 @@ func getCosmosDBAccount(ctx context.Context, d *plugin.QueryData, h *plugin.Hydr
 func extractCosmosDBVirtualNetworkRule(ctx context.Context, d *transform.TransformData) (interface{}, error) {
 	info := d.HydrateItem.(databaseAccountInfo)
 	if info.DatabaseAccount.DatabaseAccountGetProperties != nil {
-		if info.DatabaseAccount.DatabaseAccountGetProperties.VirtualNetworkRules != nil {
-			return *info.DatabaseAccount.DatabaseAccountGetProperties.VirtualNetworkRules, nil
+		if info.DatabaseAccount.VirtualNetworkRules != nil {
+			return *info.DatabaseAccount.VirtualNetworkRules, nil
 		}
 	}
 	return nil, nil

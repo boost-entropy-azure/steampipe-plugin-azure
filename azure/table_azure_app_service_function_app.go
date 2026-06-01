@@ -306,7 +306,7 @@ func getAppServiceFunctionAppSiteConfiguration(ctx context.Context, d *plugin.Qu
 	// Apply Retry rule
 	ApplyRetryRules(ctx, &webClient, d.Connection)
 
-	op, err := webClient.GetConfiguration(ctx, *data.SiteProperties.ResourceGroup, *data.Name)
+	op, err := webClient.GetConfiguration(ctx, *data.ResourceGroup, *data.Name)
 	if err != nil {
 		return nil, err
 	}
@@ -331,7 +331,7 @@ func getAppServiceFunctionAppSiteAuthSetting(ctx context.Context, d *plugin.Quer
 	// Apply Retry rule
 	ApplyRetryRules(ctx, &webClient, d.Connection)
 
-	op, err := webClient.GetAuthSettings(ctx, *data.SiteProperties.ResourceGroup, *data.Name)
+	op, err := webClient.GetAuthSettings(ctx, *data.ResourceGroup, *data.Name)
 	if err != nil {
 		return nil, err
 	}

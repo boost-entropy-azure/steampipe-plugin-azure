@@ -81,7 +81,7 @@ func structToMap(val reflect.Value) map[string]interface{} {
 		}
 
 		// Handle pointer fields
-		if fieldValue.Kind() == reflect.Ptr {
+		if fieldValue.Kind() == reflect.Pointer {
 			if !fieldValue.IsNil() {
 				elem := fieldValue.Elem()
 				// Special handling for MeterDetailsResponse type - this needs to be mapped to extract nested fields

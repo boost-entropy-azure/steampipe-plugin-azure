@@ -525,8 +525,8 @@ func extractMySQLServerPrivateEndpointConnections(ctx context.Context, d *transf
 	server := d.HydrateItem.(mysql.Server)
 	var properties []map[string]interface{}
 
-	if server.ServerProperties.PrivateEndpointConnections != nil {
-		for _, i := range *server.ServerProperties.PrivateEndpointConnections {
+	if server.PrivateEndpointConnections != nil {
+		for _, i := range *server.PrivateEndpointConnections {
 			objectMap := make(map[string]interface{})
 			if i.ID != nil {
 				objectMap["id"] = i.ID
@@ -573,14 +573,14 @@ func extractMySQLServersServerKey(i mysql.ServerKey) map[string]interface{} {
 		mySQLServersServerKey["kind"] = *i.Kind
 	}
 	if i.ServerKeyProperties != nil {
-		if i.ServerKeyProperties.ServerKeyType != nil {
-			mySQLServersServerKey["serverKeyType"] = i.ServerKeyProperties.ServerKeyType
+		if i.ServerKeyType != nil {
+			mySQLServersServerKey["serverKeyType"] = i.ServerKeyType
 		}
-		if i.ServerKeyProperties.URI != nil {
-			mySQLServersServerKey["uri"] = i.ServerKeyProperties.URI
+		if i.URI != nil {
+			mySQLServersServerKey["uri"] = i.URI
 		}
-		if i.ServerKeyProperties.CreationDate != nil {
-			mySQLServersServerKey["creationDate"] = i.ServerKeyProperties.CreationDate
+		if i.CreationDate != nil {
+			mySQLServersServerKey["creationDate"] = i.CreationDate
 		}
 	}
 	return mySQLServersServerKey

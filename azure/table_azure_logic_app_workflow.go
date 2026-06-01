@@ -319,12 +319,12 @@ func listLogicAppWorkflowDiagnosticSettings(ctx context.Context, d *plugin.Query
 func extractAccessControl(ctx context.Context, d *transform.TransformData) (interface{}, error) {
 	data := d.HydrateItem.(logic.Workflow)
 	if data.WorkflowProperties != nil {
-		if data.WorkflowProperties.AccessControl == nil {
+		if data.AccessControl == nil {
 			return nil, nil
 		} else {
 			// Due to inconsistency in the API behaviour we need this check.
-			if data.WorkflowProperties.AccessControl.Actions != nil || data.WorkflowProperties.AccessControl.Contents != nil || data.WorkflowProperties.AccessControl.Triggers != nil || data.WorkflowProperties.AccessControl.WorkflowManagement != nil {
-				return data.WorkflowProperties.AccessControl, nil
+			if data.AccessControl.Actions != nil || data.AccessControl.Contents != nil || data.AccessControl.Triggers != nil || data.AccessControl.WorkflowManagement != nil {
+				return data.AccessControl, nil
 			} else {
 				return nil, nil
 			}

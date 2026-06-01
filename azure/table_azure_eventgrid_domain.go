@@ -377,26 +377,26 @@ func extractEventgridDomainPrivaterEndPointConnections(ctx context.Context, d *t
 			}
 
 			if endpoint.PrivateEndpointConnectionProperties != nil {
-				if endpoint.PrivateEndpointConnectionProperties.PrivateEndpoint != nil {
-					if endpoint.PrivateEndpointConnectionProperties.PrivateEndpoint.ID != nil {
-						objectMap["endpointId"] = endpoint.PrivateEndpointConnectionProperties.PrivateEndpoint.ID
+				if endpoint.PrivateEndpoint != nil {
+					if endpoint.PrivateEndpoint.ID != nil {
+						objectMap["endpointId"] = endpoint.PrivateEndpoint.ID
 					}
 				}
-				if endpoint.PrivateEndpointConnectionProperties.GroupIds != nil {
-					objectMap["groupIds"] = endpoint.PrivateEndpointConnectionProperties.GroupIds
+				if endpoint.GroupIds != nil {
+					objectMap["groupIds"] = endpoint.GroupIds
 				}
-				if endpoint.PrivateEndpointConnectionProperties.ProvisioningState != "" {
-					objectMap["provisioningState"] = endpoint.PrivateEndpointConnectionProperties.ProvisioningState
+				if endpoint.ProvisioningState != "" {
+					objectMap["provisioningState"] = endpoint.ProvisioningState
 				}
-				if endpoint.PrivateEndpointConnectionProperties.PrivateLinkServiceConnectionState != nil {
-					if endpoint.PrivateEndpointConnectionProperties.PrivateLinkServiceConnectionState.Status != "" {
-						objectMap["privateLinkServiceConnectionStateStatus"] = endpoint.PrivateEndpointConnectionProperties.PrivateLinkServiceConnectionState.Status
+				if endpoint.PrivateLinkServiceConnectionState != nil {
+					if endpoint.PrivateLinkServiceConnectionState.Status != "" {
+						objectMap["privateLinkServiceConnectionStateStatus"] = endpoint.PrivateLinkServiceConnectionState.Status
 					}
-					if endpoint.PrivateEndpointConnectionProperties.PrivateLinkServiceConnectionState.Description != nil {
-						objectMap["privateLinkServiceConnectionStateDescription"] = endpoint.PrivateEndpointConnectionProperties.PrivateLinkServiceConnectionState.Description
+					if endpoint.PrivateLinkServiceConnectionState.Description != nil {
+						objectMap["privateLinkServiceConnectionStateDescription"] = endpoint.PrivateLinkServiceConnectionState.Description
 					}
-					if endpoint.PrivateEndpointConnectionProperties.PrivateLinkServiceConnectionState.ActionsRequired != nil {
-						objectMap["privateLinkServiceConnectionStateActionsRequired"] = endpoint.PrivateEndpointConnectionProperties.PrivateLinkServiceConnectionState.ActionsRequired
+					if endpoint.PrivateLinkServiceConnectionState.ActionsRequired != nil {
+						objectMap["privateLinkServiceConnectionStateActionsRequired"] = endpoint.PrivateLinkServiceConnectionState.ActionsRequired
 					}
 				}
 			}

@@ -342,15 +342,15 @@ func getAzureComputeVirtualMachineScalesetExtensions(ctx context.Context, d *plu
 		extensionMap["Name"] = extension.Name
 		extensionMap["Type"] = extension.Type
 		extensionMap["ProvisionAfterExtensions"] = extension.ProvisionAfterExtensions
-		extensionMap["Publisher"] = extension.VirtualMachineScaleSetExtensionProperties.Publisher
+		extensionMap["Publisher"] = extension.Publisher
 		extensionMap["ExtensionType"] = extension.VirtualMachineScaleSetExtensionProperties.Type
-		extensionMap["TypeHandlerVersion"] = extension.VirtualMachineScaleSetExtensionProperties.TypeHandlerVersion
-		extensionMap["AutoUpgradeMinorVersion"] = extension.VirtualMachineScaleSetExtensionProperties.AutoUpgradeMinorVersion
-		extensionMap["EnableAutomaticUpgrade"] = extension.VirtualMachineScaleSetExtensionProperties.EnableAutomaticUpgrade
-		extensionMap["ForceUpdateTag"] = extension.VirtualMachineScaleSetExtensionProperties.ForceUpdateTag
-		extensionMap["Settings"] = extension.VirtualMachineScaleSetExtensionProperties.Settings
-		extensionMap["ProtectedSettings"] = extension.VirtualMachineScaleSetExtensionProperties.ProtectedSettings
-		extensionMap["ProvisioningState"] = extension.VirtualMachineScaleSetExtensionProperties.ProvisioningState
+		extensionMap["TypeHandlerVersion"] = extension.TypeHandlerVersion
+		extensionMap["AutoUpgradeMinorVersion"] = extension.AutoUpgradeMinorVersion
+		extensionMap["EnableAutomaticUpgrade"] = extension.EnableAutomaticUpgrade
+		extensionMap["ForceUpdateTag"] = extension.ForceUpdateTag
+		extensionMap["Settings"] = extension.Settings
+		extensionMap["ProtectedSettings"] = extension.ProtectedSettings
+		extensionMap["ProvisioningState"] = extension.ProvisioningState
 		plugin.Logger(ctx).Trace("Extensions ==>", extensionMap)
 		extensions = append(extensions, extensionMap)
 	}

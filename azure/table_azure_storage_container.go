@@ -309,9 +309,9 @@ func getImmutabilityPolicy(ctx context.Context, d *plugin.QueryData, h *plugin.H
 		ImmutabilityPolicy["Type"] = op.Type
 	}
 	if op.ImmutabilityPolicyProperty != nil {
-		ImmutabilityPolicy["AllowProtectedAppendWrites"] = op.ImmutabilityPolicyProperty.AllowProtectedAppendWrites
-		ImmutabilityPolicy["ImmutabilityPeriodSinceCreationInDays"] = op.ImmutabilityPolicyProperty.ImmutabilityPeriodSinceCreationInDays
-		ImmutabilityPolicy["State"] = op.ImmutabilityPolicyProperty.State
+		ImmutabilityPolicy["AllowProtectedAppendWrites"] = op.AllowProtectedAppendWrites
+		ImmutabilityPolicy["ImmutabilityPeriodSinceCreationInDays"] = op.ImmutabilityPeriodSinceCreationInDays
+		ImmutabilityPolicy["State"] = op.State
 	}
 
 	return ImmutabilityPolicy, nil

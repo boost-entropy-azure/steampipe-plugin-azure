@@ -441,9 +441,9 @@ func extractServiceBusNamespacAuthRule(i servicebus.SBAuthorizationRule) map[str
 		serviceBusNamespaceAuthRule["systemData"] = *i.SystemData
 	}
 	if i.SBAuthorizationRuleProperties != nil {
-		if len(*i.SBAuthorizationRuleProperties.Rights) > 0 {
+		if len(*i.Rights) > 0 {
 			serviceBusNamespaceAuthRule["properties"] = map[string]interface{}{
-				"rights": *i.SBAuthorizationRuleProperties.Rights,
+				"rights": *i.Rights,
 			}
 		}
 	}
@@ -463,14 +463,14 @@ func extractServiceBusNamespacePrivateEndpointConnection(i servicebus.PrivateEnd
 		serviceBusNamespacePrivateEndpointConnection["type"] = *i.Type
 	}
 	if i.PrivateEndpointConnectionProperties != nil {
-		if len(i.PrivateEndpointConnectionProperties.ProvisioningState) > 0 {
-			serviceBusNamespacePrivateEndpointConnection["provisioningState"] = i.PrivateEndpointConnectionProperties.ProvisioningState
+		if len(i.ProvisioningState) > 0 {
+			serviceBusNamespacePrivateEndpointConnection["provisioningState"] = i.ProvisioningState
 		}
-		if i.PrivateEndpointConnectionProperties.PrivateLinkServiceConnectionState != nil {
-			serviceBusNamespacePrivateEndpointConnection["privateLinkServiceConnectionState"] = i.PrivateEndpointConnectionProperties.PrivateLinkServiceConnectionState
+		if i.PrivateLinkServiceConnectionState != nil {
+			serviceBusNamespacePrivateEndpointConnection["privateLinkServiceConnectionState"] = i.PrivateLinkServiceConnectionState
 		}
-		if i.PrivateEndpointConnectionProperties.PrivateEndpoint != nil && i.PrivateEndpointConnectionProperties.PrivateEndpoint.ID != nil {
-			serviceBusNamespacePrivateEndpointConnection["privateEndpointPropertyID"] = i.PrivateEndpointConnectionProperties.PrivateEndpoint.ID
+		if i.PrivateEndpoint != nil && i.PrivateEndpoint.ID != nil {
+			serviceBusNamespacePrivateEndpointConnection["privateEndpointPropertyID"] = i.PrivateEndpoint.ID
 		}
 	}
 	return serviceBusNamespacePrivateEndpointConnection

@@ -203,8 +203,8 @@ func getAzureComputeDiskAccess(ctx context.Context, d *plugin.QueryData, h *plug
 func extractPrivateEndpointConnections(ctx context.Context, d *transform.TransformData) (interface{}, error) {
 	diskAccess := d.HydrateItem.(compute.DiskAccess)
 	var PrivateEndpointConnections []PrivateEndpointConnection
-	if diskAccess.DiskAccessProperties.PrivateEndpointConnections != nil {
-		for _, connection := range *diskAccess.DiskAccessProperties.PrivateEndpointConnections {
+	if diskAccess.PrivateEndpointConnections != nil {
+		for _, connection := range *diskAccess.PrivateEndpointConnections {
 			var PrivateConnection PrivateEndpointConnection
 			if connection.ID != nil {
 				PrivateConnection.ID = *connection.ID

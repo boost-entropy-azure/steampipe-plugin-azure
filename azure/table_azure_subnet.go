@@ -260,8 +260,8 @@ func getSubnetIpConfigurations(ctx context.Context, d *plugin.QueryData, h *plug
 	configurations := []network.IPConfiguration{}
 
 	if subnet.SubnetPropertiesFormat != nil {
-		if subnet.SubnetPropertiesFormat.IPConfigurations != nil {
-			configurations = *subnet.SubnetPropertiesFormat.IPConfigurations
+		if subnet.IPConfigurations != nil {
+			configurations = *subnet.IPConfigurations
 		}
 	}
 	if len(configurations) <= 0 {

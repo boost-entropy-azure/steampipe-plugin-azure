@@ -272,21 +272,21 @@ func extractHPCCacheNetworkSettings(ctx context.Context, d *transform.TransformD
 	cache := d.HydrateItem.(storagecache.Cache)
 	var properties CacheNetworkSettingsInfo
 
-	if cache.CacheProperties.NetworkSettings != nil {
-		if cache.CacheProperties.NetworkSettings.Mtu != nil {
-			properties.Mtu = cache.CacheProperties.NetworkSettings.Mtu
+	if cache.NetworkSettings != nil {
+		if cache.NetworkSettings.Mtu != nil {
+			properties.Mtu = cache.NetworkSettings.Mtu
 		}
-		if cache.CacheProperties.NetworkSettings.UtilityAddresses != nil {
-			properties.UtilityAddresses = cache.CacheProperties.NetworkSettings.UtilityAddresses
+		if cache.NetworkSettings.UtilityAddresses != nil {
+			properties.UtilityAddresses = cache.NetworkSettings.UtilityAddresses
 		}
-		if cache.CacheProperties.NetworkSettings.DNSServers != nil {
-			properties.DNSServers = cache.CacheProperties.NetworkSettings.DNSServers
+		if cache.NetworkSettings.DNSServers != nil {
+			properties.DNSServers = cache.NetworkSettings.DNSServers
 		}
-		if cache.CacheProperties.NetworkSettings.DNSSearchDomain != nil {
-			properties.DNSSearchDomain = cache.CacheProperties.NetworkSettings.DNSSearchDomain
+		if cache.NetworkSettings.DNSSearchDomain != nil {
+			properties.DNSSearchDomain = cache.NetworkSettings.DNSSearchDomain
 		}
-		if cache.CacheProperties.NetworkSettings.NtpServer != nil {
-			properties.NtpServer = cache.CacheProperties.NetworkSettings.NtpServer
+		if cache.NetworkSettings.NtpServer != nil {
+			properties.NtpServer = cache.NetworkSettings.NtpServer
 		}
 	}
 
@@ -299,21 +299,21 @@ func extractHPCCacheUpgradeStatus(ctx context.Context, d *transform.TransformDat
 	cache := d.HydrateItem.(storagecache.Cache)
 	var properties CacheUpgradeStatusInfo
 
-	if cache.CacheProperties.UpgradeStatus != nil {
-		if cache.CacheProperties.UpgradeStatus.CurrentFirmwareVersion != nil {
-			properties.CurrentFirmwareVersion = cache.CacheProperties.UpgradeStatus.CurrentFirmwareVersion
+	if cache.UpgradeStatus != nil {
+		if cache.UpgradeStatus.CurrentFirmwareVersion != nil {
+			properties.CurrentFirmwareVersion = cache.UpgradeStatus.CurrentFirmwareVersion
 		}
-		if len(cache.CacheProperties.UpgradeStatus.FirmwareUpdateStatus) > 0 {
-			properties.FirmwareUpdateStatus = cache.CacheProperties.UpgradeStatus.FirmwareUpdateStatus
+		if len(cache.UpgradeStatus.FirmwareUpdateStatus) > 0 {
+			properties.FirmwareUpdateStatus = cache.UpgradeStatus.FirmwareUpdateStatus
 		}
-		if cache.CacheProperties.UpgradeStatus.FirmwareUpdateDeadline != nil {
-			properties.FirmwareUpdateDeadline = cache.CacheProperties.UpgradeStatus.FirmwareUpdateDeadline
+		if cache.UpgradeStatus.FirmwareUpdateDeadline != nil {
+			properties.FirmwareUpdateDeadline = cache.UpgradeStatus.FirmwareUpdateDeadline
 		}
-		if cache.CacheProperties.UpgradeStatus.LastFirmwareUpdate != nil {
-			properties.LastFirmwareUpdate = cache.CacheProperties.UpgradeStatus.LastFirmwareUpdate
+		if cache.UpgradeStatus.LastFirmwareUpdate != nil {
+			properties.LastFirmwareUpdate = cache.UpgradeStatus.LastFirmwareUpdate
 		}
-		if cache.CacheProperties.UpgradeStatus.PendingFirmwareVersion != nil {
-			properties.PendingFirmwareVersion = cache.CacheProperties.UpgradeStatus.PendingFirmwareVersion
+		if cache.UpgradeStatus.PendingFirmwareVersion != nil {
+			properties.PendingFirmwareVersion = cache.UpgradeStatus.PendingFirmwareVersion
 		}
 	}
 

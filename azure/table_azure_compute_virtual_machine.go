@@ -669,16 +669,16 @@ func getAzureComputeVirtualMachineExtensions(ctx context.Context, d *plugin.Quer
 		extensionMap["Name"] = extension.Name
 		extensionMap["Type"] = extension.Type
 		extensionMap["Location"] = extension.Location
-		extensionMap["Publisher"] = extension.VirtualMachineExtensionProperties.Publisher
+		extensionMap["Publisher"] = extension.Publisher
 		extensionMap["ExtensionType"] = extension.VirtualMachineExtensionProperties.Type
-		extensionMap["TypeHandlerVersion"] = extension.VirtualMachineExtensionProperties.TypeHandlerVersion
-		extensionMap["AutoUpgradeMinorVersion"] = extension.VirtualMachineExtensionProperties.AutoUpgradeMinorVersion
-		extensionMap["EnableAutomaticUpgrade"] = extension.VirtualMachineExtensionProperties.EnableAutomaticUpgrade
-		extensionMap["ForceUpdateTag"] = extension.VirtualMachineExtensionProperties.ForceUpdateTag
-		extensionMap["Settings"] = extension.VirtualMachineExtensionProperties.Settings
-		extensionMap["ProtectedSettings"] = extension.VirtualMachineExtensionProperties.ProtectedSettings
-		extensionMap["ProvisioningState"] = extension.VirtualMachineExtensionProperties.ProvisioningState
-		extensionMap["InstanceView"] = extension.VirtualMachineExtensionProperties.InstanceView
+		extensionMap["TypeHandlerVersion"] = extension.TypeHandlerVersion
+		extensionMap["AutoUpgradeMinorVersion"] = extension.AutoUpgradeMinorVersion
+		extensionMap["EnableAutomaticUpgrade"] = extension.EnableAutomaticUpgrade
+		extensionMap["ForceUpdateTag"] = extension.ForceUpdateTag
+		extensionMap["Settings"] = extension.Settings
+		extensionMap["ProtectedSettings"] = extension.ProtectedSettings
+		extensionMap["ProvisioningState"] = extension.ProvisioningState
+		extensionMap["InstanceView"] = extension.InstanceView
 		extensionMap["Tags"] = extension.Tags
 		extensions = append(extensions, extensionMap)
 	}
@@ -765,7 +765,7 @@ func getPowerState(ctx context.Context, d *transform.TransformData) (interface{}
 	}
 	statuses, ok := d.Value.(*[]compute.InstanceViewStatus)
 	if !ok {
-		return nil, fmt.Errorf("Conversion failed for virtual machine statuses")
+		return nil, fmt.Errorf("conversion failed for virtual machine statuses")
 	}
 
 	// In some cases, we are encountering a situation where 'statuses' is a non-nil pointer
@@ -788,7 +788,7 @@ func getPrivateIpsFromIpconfig(ctx context.Context, d *transform.TransformData) 
 	var ips []string
 	ipConfigs, ok := d.Value.([]network.InterfaceIPConfiguration)
 	if !ok {
-		return nil, fmt.Errorf("Conversion failed for virtual machine ip configs")
+		return nil, fmt.Errorf("conversion failed for virtual machine ip configs")
 	}
 	for _, ipConfig := range ipConfigs {
 		ips = append(ips, *ipConfig.PrivateIPAddress)

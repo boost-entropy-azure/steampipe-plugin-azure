@@ -417,14 +417,14 @@ func extractEventHubNamespacePrivateEndpointConnections(i eventhub.PrivateEndpoi
 		eventHubNamespacePrivateEndpointConnection["type"] = *i.Type
 	}
 	if i.PrivateEndpointConnectionProperties != nil {
-		if len(i.PrivateEndpointConnectionProperties.ProvisioningState) > 0 {
-			eventHubNamespacePrivateEndpointConnection["provisioningState"] = i.PrivateEndpointConnectionProperties.ProvisioningState
+		if len(i.ProvisioningState) > 0 {
+			eventHubNamespacePrivateEndpointConnection["provisioningState"] = i.ProvisioningState
 		}
-		if i.PrivateEndpointConnectionProperties.PrivateLinkServiceConnectionState != nil {
-			eventHubNamespacePrivateEndpointConnection["privateLinkServiceConnectionState"] = i.PrivateEndpointConnectionProperties.PrivateLinkServiceConnectionState
+		if i.PrivateLinkServiceConnectionState != nil {
+			eventHubNamespacePrivateEndpointConnection["privateLinkServiceConnectionState"] = i.PrivateLinkServiceConnectionState
 		}
-		if i.PrivateEndpointConnectionProperties.PrivateEndpoint != nil && i.PrivateEndpointConnectionProperties.PrivateEndpoint.ID != nil {
-			eventHubNamespacePrivateEndpointConnection["privateEndpointPropertyID"] = i.PrivateEndpointConnectionProperties.PrivateEndpoint.ID
+		if i.PrivateEndpoint != nil && i.PrivateEndpoint.ID != nil {
+			eventHubNamespacePrivateEndpointConnection["privateEndpointPropertyID"] = i.PrivateEndpoint.ID
 		}
 	}
 	return eventHubNamespacePrivateEndpointConnection

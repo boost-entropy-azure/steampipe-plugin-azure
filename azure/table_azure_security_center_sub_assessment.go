@@ -387,7 +387,7 @@ func extractCVSS(CVSS map[string]*security.CVSS) map[string]interface{} {
 
 func extractResourceDetails(ctx context.Context, d *transform.TransformData) (interface{}, error) {
 	subAssessment := d.HydrateItem.(security.SubAssessment)
-	resourceDetails := subAssessment.SubAssessmentProperties.ResourceDetails
+	resourceDetails := subAssessment.ResourceDetails
 	if resourceDetails == nil {
 		return nil, nil
 	}

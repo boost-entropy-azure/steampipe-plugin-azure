@@ -316,24 +316,24 @@ func getHealthcarePrivateEndpointConnections(ctx context.Context, d *plugin.Quer
 			privateEndpoint["PrivateEndpointConnectionType"] = conn.Type
 		}
 		if conn.PrivateEndpointConnectionProperties != nil {
-			if conn.PrivateEndpointConnectionProperties.PrivateEndpoint != nil {
-				if conn.PrivateEndpointConnectionProperties.PrivateEndpoint.ID != nil {
-					privateEndpoint["PrivateEndpointId"] = conn.PrivateEndpointConnectionProperties.PrivateEndpoint.ID
+			if conn.PrivateEndpoint != nil {
+				if conn.PrivateEndpoint.ID != nil {
+					privateEndpoint["PrivateEndpointId"] = conn.PrivateEndpoint.ID
 				}
 			}
-			if conn.PrivateEndpointConnectionProperties.PrivateLinkServiceConnectionState != nil {
-				if conn.PrivateEndpointConnectionProperties.PrivateLinkServiceConnectionState.ActionsRequired != nil {
-					privateEndpoint["PrivateLinkServiceConnectionStateActionsRequired"] = conn.PrivateEndpointConnectionProperties.PrivateLinkServiceConnectionState.ActionsRequired
+			if conn.PrivateLinkServiceConnectionState != nil {
+				if conn.PrivateLinkServiceConnectionState.ActionsRequired != nil {
+					privateEndpoint["PrivateLinkServiceConnectionStateActionsRequired"] = conn.PrivateLinkServiceConnectionState.ActionsRequired
 				}
-				if conn.PrivateEndpointConnectionProperties.PrivateLinkServiceConnectionState.Status != "" {
-					privateEndpoint["PrivateLinkServiceConnectionStateStatus"] = conn.PrivateEndpointConnectionProperties.PrivateLinkServiceConnectionState.Status
+				if conn.PrivateLinkServiceConnectionState.Status != "" {
+					privateEndpoint["PrivateLinkServiceConnectionStateStatus"] = conn.PrivateLinkServiceConnectionState.Status
 				}
-				if conn.PrivateEndpointConnectionProperties.PrivateLinkServiceConnectionState.Description != nil {
-					privateEndpoint["PrivateLinkServiceConnectionStateDescription"] = conn.PrivateEndpointConnectionProperties.PrivateLinkServiceConnectionState.Description
+				if conn.PrivateLinkServiceConnectionState.Description != nil {
+					privateEndpoint["PrivateLinkServiceConnectionStateDescription"] = conn.PrivateLinkServiceConnectionState.Description
 				}
 			}
-			if conn.PrivateEndpointConnectionProperties.ProvisioningState != "" {
-				privateEndpoint["ProvisioningState"] = conn.PrivateEndpointConnectionProperties.ProvisioningState
+			if conn.ProvisioningState != "" {
+				privateEndpoint["ProvisioningState"] = conn.ProvisioningState
 			}
 		}
 		privateEndpoints = append(privateEndpoints, privateEndpoint)

@@ -606,14 +606,14 @@ func postgreSqlServerkeyMap(key postgresql.ServerKey) ServerKeyInfo {
 	}
 
 	if key.ServerKeyProperties != nil {
-		if key.ServerKeyProperties.CreationDate != nil {
-			serverKey.ServerKeyCreationDate = key.ServerKeyProperties.CreationDate
+		if key.CreationDate != nil {
+			serverKey.ServerKeyCreationDate = key.CreationDate
 		}
-		if key.ServerKeyProperties.ServerKeyType != nil {
-			serverKey.ServerKeyType = key.ServerKeyProperties.ServerKeyType
+		if key.ServerKeyType != nil {
+			serverKey.ServerKeyType = key.ServerKeyType
 		}
-		if key.ServerKeyProperties.URI != nil {
-			serverKey.ServerKeyUri = key.ServerKeyProperties.URI
+		if key.URI != nil {
+			serverKey.ServerKeyUri = key.URI
 		}
 	}
 
@@ -625,8 +625,8 @@ func extractPostgreSqlServerPrivateEndpointConnections(ctx context.Context, d *t
 	server := d.HydrateItem.(postgresql.Server)
 	var properties []map[string]interface{}
 
-	if server.ServerProperties.PrivateEndpointConnections != nil {
-		for _, i := range *server.ServerProperties.PrivateEndpointConnections {
+	if server.PrivateEndpointConnections != nil {
+		for _, i := range *server.PrivateEndpointConnections {
 			objectMap := make(map[string]interface{})
 			if i.ID != nil {
 				objectMap["id"] = i.ID

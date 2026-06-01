@@ -322,18 +322,18 @@ func extractSignalRServicePrivateEndpointConnections(ctx context.Context, d *tra
 	service := d.HydrateItem.(signalr.ResourceType)
 	info := []SignalRServicePrivateEndpointConnections{}
 
-	if service.Properties != nil && service.Properties.PrivateEndpointConnections != nil {
-		for _, connection := range *service.Properties.PrivateEndpointConnections {
+	if service.Properties != nil && service.PrivateEndpointConnections != nil {
+		for _, connection := range *service.PrivateEndpointConnections {
 			properties := SignalRServicePrivateEndpointConnections{}
 			properties.ID = connection.ID
 			properties.Name = connection.Name
 			properties.Type = connection.Type
 			if connection.PrivateEndpointConnectionProperties != nil {
-				if connection.PrivateEndpointConnectionProperties.PrivateEndpoint != nil {
-					properties.PrivateEndpointPropertyID = connection.PrivateEndpointConnectionProperties.PrivateEndpoint.ID
+				if connection.PrivateEndpoint != nil {
+					properties.PrivateEndpointPropertyID = connection.PrivateEndpoint.ID
 				}
-				properties.PrivateLinkServiceConnectionState = connection.PrivateEndpointConnectionProperties.PrivateLinkServiceConnectionState
-				properties.ProvisioningState = connection.PrivateEndpointConnectionProperties.ProvisioningState
+				properties.PrivateLinkServiceConnectionState = connection.PrivateLinkServiceConnectionState
+				properties.ProvisioningState = connection.ProvisioningState
 			}
 			info = append(info, properties)
 		}
