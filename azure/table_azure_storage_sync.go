@@ -215,18 +215,18 @@ func extractStorageSyncPrivateEndpointConnections(ctx context.Context, d *transf
 	service := d.HydrateItem.(storagesync.Service)
 	info := []StorageSyncPrivateEndpointConnections{}
 
-	if service.ServiceProperties != nil && service.ServiceProperties.PrivateEndpointConnections != nil {
-		for _, connection := range *service.ServiceProperties.PrivateEndpointConnections {
+	if service.ServiceProperties != nil && service.PrivateEndpointConnections != nil {
+		for _, connection := range *service.PrivateEndpointConnections {
 			properties := StorageSyncPrivateEndpointConnections{}
 			properties.ID = connection.ID
 			properties.Name = connection.Name
 			properties.Type = connection.Type
 			if connection.PrivateEndpointConnectionProperties != nil {
-				if connection.PrivateEndpointConnectionProperties.PrivateEndpoint != nil {
-					properties.PrivateEndpointPropertyID = connection.PrivateEndpointConnectionProperties.PrivateEndpoint.ID
+				if connection.PrivateEndpoint != nil {
+					properties.PrivateEndpointPropertyID = connection.PrivateEndpoint.ID
 				}
-				properties.PrivateLinkServiceConnectionState = connection.PrivateEndpointConnectionProperties.PrivateLinkServiceConnectionState
-				properties.ProvisioningState = connection.PrivateEndpointConnectionProperties.ProvisioningState
+				properties.PrivateLinkServiceConnectionState = connection.PrivateLinkServiceConnectionState
+				properties.ProvisioningState = connection.ProvisioningState
 			}
 			info = append(info, properties)
 		}

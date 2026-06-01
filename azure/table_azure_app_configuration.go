@@ -303,8 +303,8 @@ func extractAppConfigurationPrivateEndpointConnections(ctx context.Context, d *t
 	server := d.HydrateItem.(appconfiguration.ConfigurationStore)
 	var properties []map[string]interface{}
 
-	if server.ConfigurationStoreProperties.PrivateEndpointConnections != nil {
-		for _, i := range *server.ConfigurationStoreProperties.PrivateEndpointConnections {
+	if server.PrivateEndpointConnections != nil {
+		for _, i := range *server.PrivateEndpointConnections {
 			objectMap := make(map[string]interface{})
 			if i.ID != nil {
 				objectMap["id"] = i.ID
@@ -316,22 +316,22 @@ func extractAppConfigurationPrivateEndpointConnections(ctx context.Context, d *t
 				objectMap["type"] = i.Type
 			}
 			if i.PrivateEndpointConnectionProperties != nil {
-				if i.PrivateEndpointConnectionProperties.PrivateEndpoint != nil {
-					objectMap["privateEndpointPropertyId"] = i.PrivateEndpointConnectionProperties.PrivateEndpoint.ID
+				if i.PrivateEndpoint != nil {
+					objectMap["privateEndpointPropertyId"] = i.PrivateEndpoint.ID
 				}
-				if i.PrivateEndpointConnectionProperties.PrivateLinkServiceConnectionState != nil {
-					if len(i.PrivateEndpointConnectionProperties.PrivateLinkServiceConnectionState.ActionsRequired) > 0 {
-						objectMap["privateLinkServiceConnectionStateActionsRequired"] = i.PrivateEndpointConnectionProperties.PrivateLinkServiceConnectionState.ActionsRequired
+				if i.PrivateLinkServiceConnectionState != nil {
+					if len(i.PrivateLinkServiceConnectionState.ActionsRequired) > 0 {
+						objectMap["privateLinkServiceConnectionStateActionsRequired"] = i.PrivateLinkServiceConnectionState.ActionsRequired
 					}
-					if len(i.PrivateEndpointConnectionProperties.PrivateLinkServiceConnectionState.Status) > 0 {
-						objectMap["privateLinkServiceConnectionStateStatus"] = i.PrivateEndpointConnectionProperties.PrivateLinkServiceConnectionState.Status
+					if len(i.PrivateLinkServiceConnectionState.Status) > 0 {
+						objectMap["privateLinkServiceConnectionStateStatus"] = i.PrivateLinkServiceConnectionState.Status
 					}
-					if i.PrivateEndpointConnectionProperties.PrivateLinkServiceConnectionState.Description != nil {
-						objectMap["privateLinkServiceConnectionStateDescription"] = i.PrivateEndpointConnectionProperties.PrivateLinkServiceConnectionState.Description
+					if i.PrivateLinkServiceConnectionState.Description != nil {
+						objectMap["privateLinkServiceConnectionStateDescription"] = i.PrivateLinkServiceConnectionState.Description
 					}
 				}
-				if len(i.PrivateEndpointConnectionProperties.ProvisioningState) > 0 {
-					objectMap["provisioningState"] = i.PrivateEndpointConnectionProperties.ProvisioningState
+				if len(i.ProvisioningState) > 0 {
+					objectMap["provisioningState"] = i.ProvisioningState
 				}
 			}
 			properties = append(properties, objectMap)

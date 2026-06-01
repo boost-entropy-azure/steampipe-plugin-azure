@@ -395,8 +395,8 @@ func extractSynapseWorkspacePrivateEndpointConnections(ctx context.Context, d *t
 	workspace := d.HydrateItem.(synapse.Workspace)
 	var properties []map[string]interface{}
 
-	if workspace.WorkspaceProperties.PrivateEndpointConnections != nil {
-		for _, i := range *workspace.WorkspaceProperties.PrivateEndpointConnections {
+	if workspace.PrivateEndpointConnections != nil {
+		for _, i := range *workspace.PrivateEndpointConnections {
 			objectMap := make(map[string]interface{})
 			if i.ID != nil {
 				objectMap["id"] = i.ID
@@ -408,22 +408,22 @@ func extractSynapseWorkspacePrivateEndpointConnections(ctx context.Context, d *t
 				objectMap["type"] = i.Type
 			}
 			if i.PrivateEndpointConnectionProperties != nil {
-				if i.PrivateEndpointConnectionProperties.PrivateEndpoint != nil {
-					objectMap["privateEndpointPropertyId"] = i.PrivateEndpointConnectionProperties.PrivateEndpoint.ID
+				if i.PrivateEndpoint != nil {
+					objectMap["privateEndpointPropertyId"] = i.PrivateEndpoint.ID
 				}
-				if i.PrivateEndpointConnectionProperties.PrivateLinkServiceConnectionState != nil {
-					if i.PrivateEndpointConnectionProperties.PrivateLinkServiceConnectionState.ActionsRequired != nil {
-						objectMap["privateLinkServiceConnectionStateActionsRequired"] = i.PrivateEndpointConnectionProperties.PrivateLinkServiceConnectionState.ActionsRequired
+				if i.PrivateLinkServiceConnectionState != nil {
+					if i.PrivateLinkServiceConnectionState.ActionsRequired != nil {
+						objectMap["privateLinkServiceConnectionStateActionsRequired"] = i.PrivateLinkServiceConnectionState.ActionsRequired
 					}
-					if i.PrivateEndpointConnectionProperties.PrivateLinkServiceConnectionState.Status != nil {
-						objectMap["privateLinkServiceConnectionStateStatus"] = i.PrivateEndpointConnectionProperties.PrivateLinkServiceConnectionState.Status
+					if i.PrivateLinkServiceConnectionState.Status != nil {
+						objectMap["privateLinkServiceConnectionStateStatus"] = i.PrivateLinkServiceConnectionState.Status
 					}
-					if i.PrivateEndpointConnectionProperties.PrivateLinkServiceConnectionState.Description != nil {
-						objectMap["privateLinkServiceConnectionStateDescription"] = i.PrivateEndpointConnectionProperties.PrivateLinkServiceConnectionState.Description
+					if i.PrivateLinkServiceConnectionState.Description != nil {
+						objectMap["privateLinkServiceConnectionStateDescription"] = i.PrivateLinkServiceConnectionState.Description
 					}
 				}
-				if i.PrivateEndpointConnectionProperties.ProvisioningState != nil {
-					objectMap["provisioningState"] = i.PrivateEndpointConnectionProperties.ProvisioningState
+				if i.ProvisioningState != nil {
+					objectMap["provisioningState"] = i.ProvisioningState
 				}
 			}
 			properties = append(properties, objectMap)
@@ -438,16 +438,16 @@ func extractSynapseWorkspaceEncryption(ctx context.Context, d *transform.Transfo
 	workspace := d.HydrateItem.(synapse.Workspace)
 	var properties SynapseWorkspaceEncryption
 
-	if workspace.WorkspaceProperties.Encryption != nil {
-		if workspace.WorkspaceProperties.Encryption.DoubleEncryptionEnabled != nil {
-			properties.DoubleEncryptionEnabled = workspace.WorkspaceProperties.Encryption.DoubleEncryptionEnabled
+	if workspace.Encryption != nil {
+		if workspace.Encryption.DoubleEncryptionEnabled != nil {
+			properties.DoubleEncryptionEnabled = workspace.Encryption.DoubleEncryptionEnabled
 		}
-		if workspace.WorkspaceProperties.Encryption.Cmk != nil {
-			if workspace.WorkspaceProperties.Encryption.Cmk.Status != nil {
-				properties.CmkStatus = workspace.WorkspaceProperties.Encryption.Cmk.Status
+		if workspace.Encryption.Cmk != nil {
+			if workspace.Encryption.Cmk.Status != nil {
+				properties.CmkStatus = workspace.Encryption.Cmk.Status
 			}
-			if workspace.WorkspaceProperties.Encryption.Cmk.Key != nil {
-				properties.CmkKey = workspace.WorkspaceProperties.Encryption.Cmk.Key
+			if workspace.Encryption.Cmk.Key != nil {
+				properties.CmkKey = workspace.Encryption.Cmk.Key
 			}
 		}
 	}

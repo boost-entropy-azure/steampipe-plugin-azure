@@ -215,7 +215,7 @@ func getStorageQueue(ctx context.Context, d *plugin.QueryData, h *plugin.Hydrate
 				ID:   op.ID,
 				Type: op.Type,
 				ListQueueProperties: &storage.ListQueueProperties{
-					Metadata: op.QueueProperties.Metadata,
+					Metadata: op.Metadata,
 				},
 			},
 			Account:       &accountName,

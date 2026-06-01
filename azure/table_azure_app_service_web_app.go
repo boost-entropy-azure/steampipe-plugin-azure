@@ -372,7 +372,7 @@ func getWebAppStorageAccount(ctx context.Context, d *plugin.QueryData, h *plugin
 	// Apply Retry rule
 	ApplyRetryRules(ctx, &webClient, d.Connection)
 
-	op, err := webClient.ListAzureStorageAccounts(ctx, *data.SiteProperties.ResourceGroup, *data.Name)
+	op, err := webClient.ListAzureStorageAccounts(ctx, *data.ResourceGroup, *data.Name)
 	if err != nil {
 		return nil, err
 	}
@@ -397,7 +397,7 @@ func getAppServiceWebAppSiteConfiguration(ctx context.Context, d *plugin.QueryDa
 	// Apply Retry rule
 	ApplyRetryRules(ctx, &webClient, d.Connection)
 
-	op, err := webClient.GetConfiguration(ctx, *data.SiteProperties.ResourceGroup, *data.Name)
+	op, err := webClient.GetConfiguration(ctx, *data.ResourceGroup, *data.Name)
 	if err != nil {
 		return nil, err
 	}
@@ -422,7 +422,7 @@ func getAppServiceWebAppSiteAuthSetting(ctx context.Context, d *plugin.QueryData
 	// Apply Retry rule
 	ApplyRetryRules(ctx, &webClient, d.Connection)
 
-	op, err := webClient.GetAuthSettings(ctx, *data.SiteProperties.ResourceGroup, *data.Name)
+	op, err := webClient.GetAuthSettings(ctx, *data.ResourceGroup, *data.Name)
 	if err != nil {
 		return nil, err
 	}
@@ -455,11 +455,11 @@ func getAppServiceWebAppVnetConnection(ctx context.Context, d *plugin.QueryData,
 	ApplyRetryRules(ctx, &webClient, d.Connection)
 
 	// Return nil, if no virtual network is configured
-	if *vnet.SiteConfig.VnetName == "" {
+	if *vnet.VnetName == "" {
 		return nil, nil
 	}
 
-	op, err := webClient.GetVnetConnection(ctx, *data.SiteProperties.ResourceGroup, *data.Name, *vnet.SiteConfig.VnetName)
+	op, err := webClient.GetVnetConnection(ctx, *data.ResourceGroup, *data.Name, *vnet.VnetName)
 	if err != nil {
 		return nil, err
 	}
@@ -499,7 +499,7 @@ func getWebAppDiagnosticLogsConfiguration(ctx context.Context, d *plugin.QueryDa
 	// Apply Retry rule
 	ApplyRetryRules(ctx, &webClient, d.Connection)
 
-	op, err := webClient.GetDiagnosticLogsConfiguration(ctx, *data.SiteProperties.ResourceGroup, *data.Name)
+	op, err := webClient.GetDiagnosticLogsConfiguration(ctx, *data.ResourceGroup, *data.Name)
 	if err != nil {
 		plugin.Logger(ctx).Error("azure_app_service_web_app.getWebAppDiagnosticLogsConfiguration", "api_error", err)
 		return nil, err

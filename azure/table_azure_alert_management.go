@@ -280,7 +280,7 @@ func listAlertManagements(ctx context.Context, d *plugin.QueryData, _ *plugin.Hy
 	ApplyRetryRules(ctx, &alertManagementClient, d.Connection)
 
 	var targetResource, targetResourceType, targetResourceGroup, alertRule, smartGroupID, sortOrder, selectParameter, customTimeRange string
-	var includeContext, includeEgressConfig bool = true, true
+	var includeContext, includeEgressConfig = true, true
 	var pageCount *int32
 	var sortBy alertsmanagement.AlertsSortByFields
 	var timeRange alertsmanagement.TimeRange

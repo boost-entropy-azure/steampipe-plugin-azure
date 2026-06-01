@@ -281,8 +281,8 @@ func extractMariaDBServerPrivateEndpointConnections(ctx context.Context, d *tran
 	server := d.HydrateItem.(mariadb.Server)
 	var properties []map[string]interface{}
 
-	if server.ServerProperties.PrivateEndpointConnections != nil {
-		for _, i := range *server.ServerProperties.PrivateEndpointConnections {
+	if server.PrivateEndpointConnections != nil {
+		for _, i := range *server.PrivateEndpointConnections {
 			objectMap := make(map[string]interface{})
 			if i.ID != nil {
 				objectMap["id"] = i.ID

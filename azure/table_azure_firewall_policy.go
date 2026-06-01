@@ -271,51 +271,51 @@ func extractAzureFirewallProperties(ctx context.Context, d *transform.TransformD
 	param := d.Param.(string)
 
 	if firewall.FirewallPolicyPropertiesFormat != nil {
-		if firewall.FirewallPolicyPropertiesFormat.IntrusionDetection != nil {
-			if firewall.FirewallPolicyPropertiesFormat.IntrusionDetection.Mode != "" {
-				properties["IntrusionDetectionMode"] = string(firewall.FirewallPolicyPropertiesFormat.IntrusionDetection.Mode)
+		if firewall.IntrusionDetection != nil {
+			if firewall.IntrusionDetection.Mode != "" {
+				properties["IntrusionDetectionMode"] = string(firewall.IntrusionDetection.Mode)
 			}
-			if firewall.FirewallPolicyPropertiesFormat.IntrusionDetection.Configuration != nil {
-				properties["IntrusionDetectionConfiguration"] = firewall.FirewallPolicyPropertiesFormat.IntrusionDetection.Configuration
-			}
-		}
-		if firewall.FirewallPolicyPropertiesFormat.RuleCollectionGroups != nil {
-			properties["RuleCollectionGroups"] = firewall.FirewallPolicyPropertiesFormat.RuleCollectionGroups
-		}
-		if firewall.FirewallPolicyPropertiesFormat.ProvisioningState != "" {
-			properties["ProvisioningState"] = firewall.FirewallPolicyPropertiesFormat.ProvisioningState
-		}
-		if firewall.FirewallPolicyPropertiesFormat.BasePolicy != nil {
-			properties["BasePolicy"] = firewall.FirewallPolicyPropertiesFormat.BasePolicy
-		}
-		if firewall.FirewallPolicyPropertiesFormat.Firewalls != nil {
-			properties["Firewalls"] = firewall.FirewallPolicyPropertiesFormat.Firewalls
-		}
-		if firewall.FirewallPolicyPropertiesFormat.ChildPolicies != nil {
-			properties["ChildPolicies"] = firewall.FirewallPolicyPropertiesFormat.ChildPolicies
-		}
-		if firewall.FirewallPolicyPropertiesFormat.ThreatIntelMode != "" {
-			properties["ThreatIntelMode"] = firewall.FirewallPolicyPropertiesFormat.ThreatIntelMode
-		}
-		if firewall.FirewallPolicyPropertiesFormat.ThreatIntelWhitelist != nil {
-			if firewall.FirewallPolicyPropertiesFormat.ThreatIntelWhitelist.IPAddresses != nil {
-				properties["ThreatIntelWhitelistIPAddresses"] = firewall.FirewallPolicyPropertiesFormat.ThreatIntelWhitelist.IPAddresses
-			}
-			if firewall.FirewallPolicyPropertiesFormat.ThreatIntelWhitelist.Fqdns != nil {
-				properties["ThreatIntelWhitelistFqdns"] = firewall.FirewallPolicyPropertiesFormat.ThreatIntelWhitelist.Fqdns
+			if firewall.IntrusionDetection.Configuration != nil {
+				properties["IntrusionDetectionConfiguration"] = firewall.IntrusionDetection.Configuration
 			}
 		}
-		if firewall.FirewallPolicyPropertiesFormat.DNSSettings != nil {
-			properties["DNSSettings"] = firewall.FirewallPolicyPropertiesFormat.DNSSettings
+		if firewall.RuleCollectionGroups != nil {
+			properties["RuleCollectionGroups"] = firewall.RuleCollectionGroups
 		}
-		if firewall.FirewallPolicyPropertiesFormat.TransportSecurity != nil {
-			if firewall.FirewallPolicyPropertiesFormat.TransportSecurity.CertificateAuthority != nil {
-				properties["TransportSecurityCertificateAuthority"] = firewall.FirewallPolicyPropertiesFormat.TransportSecurity.CertificateAuthority
+		if firewall.ProvisioningState != "" {
+			properties["ProvisioningState"] = firewall.ProvisioningState
+		}
+		if firewall.BasePolicy != nil {
+			properties["BasePolicy"] = firewall.BasePolicy
+		}
+		if firewall.Firewalls != nil {
+			properties["Firewalls"] = firewall.Firewalls
+		}
+		if firewall.ChildPolicies != nil {
+			properties["ChildPolicies"] = firewall.ChildPolicies
+		}
+		if firewall.ThreatIntelMode != "" {
+			properties["ThreatIntelMode"] = firewall.ThreatIntelMode
+		}
+		if firewall.ThreatIntelWhitelist != nil {
+			if firewall.ThreatIntelWhitelist.IPAddresses != nil {
+				properties["ThreatIntelWhitelistIPAddresses"] = firewall.ThreatIntelWhitelist.IPAddresses
+			}
+			if firewall.ThreatIntelWhitelist.Fqdns != nil {
+				properties["ThreatIntelWhitelistFqdns"] = firewall.ThreatIntelWhitelist.Fqdns
 			}
 		}
-		if firewall.FirewallPolicyPropertiesFormat.Sku != nil {
-			if firewall.FirewallPolicyPropertiesFormat.Sku.Tier != "" {
-				properties["SKUTier"] = firewall.FirewallPolicyPropertiesFormat.Sku.Tier
+		if firewall.DNSSettings != nil {
+			properties["DNSSettings"] = firewall.DNSSettings
+		}
+		if firewall.TransportSecurity != nil {
+			if firewall.TransportSecurity.CertificateAuthority != nil {
+				properties["TransportSecurityCertificateAuthority"] = firewall.TransportSecurity.CertificateAuthority
+			}
+		}
+		if firewall.Sku != nil {
+			if firewall.Sku.Tier != "" {
+				properties["SKUTier"] = firewall.Sku.Tier
 			}
 		}
 	}

@@ -443,8 +443,8 @@ func extractGatewayIPConfigurations(ctx context.Context, d *transform.TransformD
 	gateway := d.HydrateItem.(network.ApplicationGateway)
 	var properties []map[string]interface{}
 
-	if gateway.ApplicationGatewayPropertiesFormat.GatewayIPConfigurations != nil {
-		for _, i := range *gateway.ApplicationGatewayPropertiesFormat.GatewayIPConfigurations {
+	if gateway.GatewayIPConfigurations != nil {
+		for _, i := range *gateway.GatewayIPConfigurations {
 			objectMap := make(map[string]interface{})
 			if i.ID != nil {
 				objectMap["id"] = i.ID
@@ -460,7 +460,7 @@ func extractGatewayIPConfigurations(ctx context.Context, d *transform.TransformD
 			}
 			if i.ApplicationGatewayIPConfigurationPropertiesFormat != nil {
 				objectMap["properties"] = i.ApplicationGatewayIPConfigurationPropertiesFormat
-				objectMap["provisioning_state"] = i.ApplicationGatewayIPConfigurationPropertiesFormat.ProvisioningState
+				objectMap["provisioning_state"] = i.ProvisioningState
 			}
 			properties = append(properties, objectMap)
 		}
@@ -474,8 +474,8 @@ func extractGatewayAuthenticationCertificates(ctx context.Context, d *transform.
 	gateway := d.HydrateItem.(network.ApplicationGateway)
 	var properties []map[string]interface{}
 
-	if gateway.ApplicationGatewayPropertiesFormat.AuthenticationCertificates != nil {
-		for _, i := range *gateway.ApplicationGatewayPropertiesFormat.AuthenticationCertificates {
+	if gateway.AuthenticationCertificates != nil {
+		for _, i := range *gateway.AuthenticationCertificates {
 			objectMap := make(map[string]interface{})
 			if i.ID != nil {
 				objectMap["id"] = i.ID
@@ -491,7 +491,7 @@ func extractGatewayAuthenticationCertificates(ctx context.Context, d *transform.
 			}
 			if i.ApplicationGatewayAuthenticationCertificatePropertiesFormat != nil {
 				objectMap["properties"] = i.ApplicationGatewayAuthenticationCertificatePropertiesFormat
-				objectMap["provisioning_state"] = i.ApplicationGatewayAuthenticationCertificatePropertiesFormat.ProvisioningState
+				objectMap["provisioning_state"] = i.ProvisioningState
 			}
 			properties = append(properties, objectMap)
 		}
@@ -505,8 +505,8 @@ func extractGatewayTrustedRootCertificates(ctx context.Context, d *transform.Tra
 	gateway := d.HydrateItem.(network.ApplicationGateway)
 	var properties []map[string]interface{}
 
-	if gateway.ApplicationGatewayPropertiesFormat.TrustedRootCertificates != nil {
-		for _, i := range *gateway.ApplicationGatewayPropertiesFormat.TrustedRootCertificates {
+	if gateway.TrustedRootCertificates != nil {
+		for _, i := range *gateway.TrustedRootCertificates {
 			objectMap := make(map[string]interface{})
 			if i.ID != nil {
 				objectMap["id"] = i.ID
@@ -522,7 +522,7 @@ func extractGatewayTrustedRootCertificates(ctx context.Context, d *transform.Tra
 			}
 			if i.ApplicationGatewayTrustedRootCertificatePropertiesFormat != nil {
 				objectMap["properties"] = i.ApplicationGatewayTrustedRootCertificatePropertiesFormat
-				objectMap["provisioning_state"] = i.ApplicationGatewayTrustedRootCertificatePropertiesFormat.ProvisioningState
+				objectMap["provisioning_state"] = i.ProvisioningState
 			}
 			properties = append(properties, objectMap)
 		}
@@ -536,8 +536,8 @@ func extractGatewayTrustedClientCertificates(ctx context.Context, d *transform.T
 	gateway := d.HydrateItem.(network.ApplicationGateway)
 	var properties []map[string]interface{}
 
-	if gateway.ApplicationGatewayPropertiesFormat.TrustedClientCertificates != nil {
-		for _, i := range *gateway.ApplicationGatewayPropertiesFormat.TrustedClientCertificates {
+	if gateway.TrustedClientCertificates != nil {
+		for _, i := range *gateway.TrustedClientCertificates {
 			objectMap := make(map[string]interface{})
 			if i.ID != nil {
 				objectMap["id"] = i.ID
@@ -553,7 +553,7 @@ func extractGatewayTrustedClientCertificates(ctx context.Context, d *transform.T
 			}
 			if i.ApplicationGatewayTrustedClientCertificatePropertiesFormat != nil {
 				objectMap["properties"] = i.ApplicationGatewayTrustedClientCertificatePropertiesFormat
-				objectMap["provisioning_state"] = i.ApplicationGatewayTrustedClientCertificatePropertiesFormat.ProvisioningState
+				objectMap["provisioning_state"] = i.ProvisioningState
 			}
 			properties = append(properties, objectMap)
 		}
@@ -567,8 +567,8 @@ func extractGatewaySslCertificates(ctx context.Context, d *transform.TransformDa
 	gateway := d.HydrateItem.(network.ApplicationGateway)
 	var properties []map[string]interface{}
 
-	if gateway.ApplicationGatewayPropertiesFormat.SslCertificates != nil {
-		for _, i := range *gateway.ApplicationGatewayPropertiesFormat.SslCertificates {
+	if gateway.SslCertificates != nil {
+		for _, i := range *gateway.SslCertificates {
 			objectMap := make(map[string]interface{})
 			if i.ID != nil {
 				objectMap["id"] = i.ID
@@ -584,7 +584,7 @@ func extractGatewaySslCertificates(ctx context.Context, d *transform.TransformDa
 			}
 			if i.ApplicationGatewaySslCertificatePropertiesFormat != nil {
 				objectMap["properties"] = i.ApplicationGatewaySslCertificatePropertiesFormat
-				objectMap["provisioning_state"] = i.ApplicationGatewaySslCertificatePropertiesFormat.ProvisioningState
+				objectMap["provisioning_state"] = i.ProvisioningState
 			}
 			properties = append(properties, objectMap)
 		}
@@ -598,8 +598,8 @@ func extractGatewayFrontendIPConfigurations(ctx context.Context, d *transform.Tr
 	gateway := d.HydrateItem.(network.ApplicationGateway)
 	var properties []map[string]interface{}
 
-	if gateway.ApplicationGatewayPropertiesFormat.FrontendIPConfigurations != nil {
-		for _, i := range *gateway.ApplicationGatewayPropertiesFormat.FrontendIPConfigurations {
+	if gateway.FrontendIPConfigurations != nil {
+		for _, i := range *gateway.FrontendIPConfigurations {
 			objectMap := make(map[string]interface{})
 			if i.ID != nil {
 				objectMap["id"] = i.ID
@@ -615,7 +615,7 @@ func extractGatewayFrontendIPConfigurations(ctx context.Context, d *transform.Tr
 			}
 			if i.ApplicationGatewayFrontendIPConfigurationPropertiesFormat != nil {
 				objectMap["properties"] = i.ApplicationGatewayFrontendIPConfigurationPropertiesFormat
-				objectMap["provisioning_state"] = i.ApplicationGatewayFrontendIPConfigurationPropertiesFormat.ProvisioningState
+				objectMap["provisioning_state"] = i.ProvisioningState
 			}
 			properties = append(properties, objectMap)
 		}
@@ -629,8 +629,8 @@ func extractGatewayFrontendPorts(ctx context.Context, d *transform.TransformData
 	gateway := d.HydrateItem.(network.ApplicationGateway)
 	var properties []map[string]interface{}
 
-	if gateway.ApplicationGatewayPropertiesFormat.FrontendPorts != nil {
-		for _, i := range *gateway.ApplicationGatewayPropertiesFormat.FrontendPorts {
+	if gateway.FrontendPorts != nil {
+		for _, i := range *gateway.FrontendPorts {
 			objectMap := make(map[string]interface{})
 			if i.ID != nil {
 				objectMap["id"] = i.ID
@@ -646,7 +646,7 @@ func extractGatewayFrontendPorts(ctx context.Context, d *transform.TransformData
 			}
 			if i.ApplicationGatewayFrontendPortPropertiesFormat != nil {
 				objectMap["properties"] = i.ApplicationGatewayFrontendPortPropertiesFormat
-				objectMap["provisioning_state"] = i.ApplicationGatewayFrontendPortPropertiesFormat.ProvisioningState
+				objectMap["provisioning_state"] = i.ProvisioningState
 			}
 			properties = append(properties, objectMap)
 		}
@@ -660,8 +660,8 @@ func extractGatewayProbes(ctx context.Context, d *transform.TransformData) (inte
 	gateway := d.HydrateItem.(network.ApplicationGateway)
 	var properties []map[string]interface{}
 
-	if gateway.ApplicationGatewayPropertiesFormat.Probes != nil {
-		for _, i := range *gateway.ApplicationGatewayPropertiesFormat.Probes {
+	if gateway.Probes != nil {
+		for _, i := range *gateway.Probes {
 			objectMap := make(map[string]interface{})
 			if i.ID != nil {
 				objectMap["id"] = i.ID
@@ -677,7 +677,7 @@ func extractGatewayProbes(ctx context.Context, d *transform.TransformData) (inte
 			}
 			if i.ApplicationGatewayProbePropertiesFormat != nil {
 				objectMap["properties"] = i.ApplicationGatewayProbePropertiesFormat
-				objectMap["provisioning_state"] = i.ApplicationGatewayProbePropertiesFormat.ProvisioningState
+				objectMap["provisioning_state"] = i.ProvisioningState
 			}
 			properties = append(properties, objectMap)
 		}
@@ -691,8 +691,8 @@ func extractGatewayBackendAddressPools(ctx context.Context, d *transform.Transfo
 	gateway := d.HydrateItem.(network.ApplicationGateway)
 	var properties []map[string]interface{}
 
-	if gateway.ApplicationGatewayPropertiesFormat.BackendAddressPools != nil {
-		for _, i := range *gateway.ApplicationGatewayPropertiesFormat.BackendAddressPools {
+	if gateway.BackendAddressPools != nil {
+		for _, i := range *gateway.BackendAddressPools {
 			objectMap := make(map[string]interface{})
 			if i.ID != nil {
 				objectMap["id"] = i.ID
@@ -708,7 +708,7 @@ func extractGatewayBackendAddressPools(ctx context.Context, d *transform.Transfo
 			}
 			if i.ApplicationGatewayBackendAddressPoolPropertiesFormat != nil {
 				objectMap["properties"] = i.ApplicationGatewayBackendAddressPoolPropertiesFormat
-				objectMap["provisioning_state"] = i.ApplicationGatewayBackendAddressPoolPropertiesFormat.ProvisioningState
+				objectMap["provisioning_state"] = i.ProvisioningState
 			}
 			properties = append(properties, objectMap)
 		}
@@ -722,8 +722,8 @@ func extractGatewayBackendHTTPSettingsCollection(ctx context.Context, d *transfo
 	gateway := d.HydrateItem.(network.ApplicationGateway)
 	var properties []map[string]interface{}
 
-	if gateway.ApplicationGatewayPropertiesFormat.BackendHTTPSettingsCollection != nil {
-		for _, i := range *gateway.ApplicationGatewayPropertiesFormat.BackendHTTPSettingsCollection {
+	if gateway.BackendHTTPSettingsCollection != nil {
+		for _, i := range *gateway.BackendHTTPSettingsCollection {
 			objectMap := make(map[string]interface{})
 			if i.ID != nil {
 				objectMap["id"] = i.ID
@@ -739,7 +739,7 @@ func extractGatewayBackendHTTPSettingsCollection(ctx context.Context, d *transfo
 			}
 			if i.ApplicationGatewayBackendHTTPSettingsPropertiesFormat != nil {
 				objectMap["properties"] = i.ApplicationGatewayBackendHTTPSettingsPropertiesFormat
-				objectMap["provisioning_state"] = i.ApplicationGatewayBackendHTTPSettingsPropertiesFormat.ProvisioningState
+				objectMap["provisioning_state"] = i.ProvisioningState
 			}
 			properties = append(properties, objectMap)
 		}
@@ -753,8 +753,8 @@ func extractGatewayHTTPListeners(ctx context.Context, d *transform.TransformData
 	gateway := d.HydrateItem.(network.ApplicationGateway)
 	var properties []map[string]interface{}
 
-	if gateway.ApplicationGatewayPropertiesFormat.HTTPListeners != nil {
-		for _, i := range *gateway.ApplicationGatewayPropertiesFormat.HTTPListeners {
+	if gateway.HTTPListeners != nil {
+		for _, i := range *gateway.HTTPListeners {
 			objectMap := make(map[string]interface{})
 			if i.ID != nil {
 				objectMap["id"] = i.ID
@@ -770,7 +770,7 @@ func extractGatewayHTTPListeners(ctx context.Context, d *transform.TransformData
 			}
 			if i.ApplicationGatewayHTTPListenerPropertiesFormat != nil {
 				objectMap["properties"] = i.ApplicationGatewayHTTPListenerPropertiesFormat
-				objectMap["provisioning_state"] = i.ApplicationGatewayHTTPListenerPropertiesFormat.ProvisioningState
+				objectMap["provisioning_state"] = i.ProvisioningState
 			}
 			properties = append(properties, objectMap)
 		}
@@ -784,8 +784,8 @@ func extractGatewaySslProfiles(ctx context.Context, d *transform.TransformData) 
 	gateway := d.HydrateItem.(network.ApplicationGateway)
 	var properties []map[string]interface{}
 
-	if gateway.ApplicationGatewayPropertiesFormat.SslProfiles != nil {
-		for _, i := range *gateway.ApplicationGatewayPropertiesFormat.SslProfiles {
+	if gateway.SslProfiles != nil {
+		for _, i := range *gateway.SslProfiles {
 			objectMap := make(map[string]interface{})
 			if i.ID != nil {
 				objectMap["id"] = i.ID
@@ -801,7 +801,7 @@ func extractGatewaySslProfiles(ctx context.Context, d *transform.TransformData) 
 			}
 			if i.ApplicationGatewaySslProfilePropertiesFormat != nil {
 				objectMap["properties"] = i.ApplicationGatewaySslProfilePropertiesFormat
-				objectMap["provisioning_state"] = i.ApplicationGatewaySslProfilePropertiesFormat.ProvisioningState
+				objectMap["provisioning_state"] = i.ProvisioningState
 			}
 			properties = append(properties, objectMap)
 		}
@@ -815,8 +815,8 @@ func extractGatewayURLPathMaps(ctx context.Context, d *transform.TransformData) 
 	gateway := d.HydrateItem.(network.ApplicationGateway)
 	var properties []map[string]interface{}
 
-	if gateway.ApplicationGatewayPropertiesFormat.URLPathMaps != nil {
-		for _, i := range *gateway.ApplicationGatewayPropertiesFormat.URLPathMaps {
+	if gateway.URLPathMaps != nil {
+		for _, i := range *gateway.URLPathMaps {
 			objectMap := make(map[string]interface{})
 			if i.ID != nil {
 				objectMap["id"] = i.ID
@@ -832,7 +832,7 @@ func extractGatewayURLPathMaps(ctx context.Context, d *transform.TransformData) 
 			}
 			if i.ApplicationGatewayURLPathMapPropertiesFormat != nil {
 				objectMap["properties"] = i.ApplicationGatewayURLPathMapPropertiesFormat
-				objectMap["provisioning_state"] = i.ApplicationGatewayURLPathMapPropertiesFormat.ProvisioningState
+				objectMap["provisioning_state"] = i.ProvisioningState
 			}
 			properties = append(properties, objectMap)
 		}
@@ -846,8 +846,8 @@ func extractGatewayRequestRoutingRules(ctx context.Context, d *transform.Transfo
 	gateway := d.HydrateItem.(network.ApplicationGateway)
 	var properties []map[string]interface{}
 
-	if gateway.ApplicationGatewayPropertiesFormat.RequestRoutingRules != nil {
-		for _, i := range *gateway.ApplicationGatewayPropertiesFormat.RequestRoutingRules {
+	if gateway.RequestRoutingRules != nil {
+		for _, i := range *gateway.RequestRoutingRules {
 			objectMap := make(map[string]interface{})
 			if i.ID != nil {
 				objectMap["id"] = i.ID
@@ -863,7 +863,7 @@ func extractGatewayRequestRoutingRules(ctx context.Context, d *transform.Transfo
 			}
 			if i.ApplicationGatewayRequestRoutingRulePropertiesFormat != nil {
 				objectMap["properties"] = i.ApplicationGatewayRequestRoutingRulePropertiesFormat
-				objectMap["provisioning_state"] = i.ApplicationGatewayRequestRoutingRulePropertiesFormat.ProvisioningState
+				objectMap["provisioning_state"] = i.ProvisioningState
 			}
 			properties = append(properties, objectMap)
 		}
@@ -877,8 +877,8 @@ func extractGatewayRewriteRuleSets(ctx context.Context, d *transform.TransformDa
 	gateway := d.HydrateItem.(network.ApplicationGateway)
 	var properties []map[string]interface{}
 
-	if gateway.ApplicationGatewayPropertiesFormat.RewriteRuleSets != nil {
-		for _, i := range *gateway.ApplicationGatewayPropertiesFormat.RewriteRuleSets {
+	if gateway.RewriteRuleSets != nil {
+		for _, i := range *gateway.RewriteRuleSets {
 			objectMap := make(map[string]interface{})
 			if i.ID != nil {
 				objectMap["id"] = i.ID
@@ -891,7 +891,7 @@ func extractGatewayRewriteRuleSets(ctx context.Context, d *transform.TransformDa
 			}
 			if i.ApplicationGatewayRewriteRuleSetPropertiesFormat != nil {
 				objectMap["properties"] = i.ApplicationGatewayRewriteRuleSetPropertiesFormat
-				objectMap["provisioning_state"] = i.ApplicationGatewayRewriteRuleSetPropertiesFormat.ProvisioningState
+				objectMap["provisioning_state"] = i.ProvisioningState
 			}
 			properties = append(properties, objectMap)
 		}
@@ -905,8 +905,8 @@ func extractGatewayPrivateLinkConfigurations(ctx context.Context, d *transform.T
 	gateway := d.HydrateItem.(network.ApplicationGateway)
 	var properties []map[string]interface{}
 
-	if gateway.ApplicationGatewayPropertiesFormat.PrivateLinkConfigurations != nil {
-		for _, i := range *gateway.ApplicationGatewayPropertiesFormat.PrivateLinkConfigurations {
+	if gateway.PrivateLinkConfigurations != nil {
+		for _, i := range *gateway.PrivateLinkConfigurations {
 			objectMap := make(map[string]interface{})
 			if i.ID != nil {
 				objectMap["id"] = i.ID
@@ -919,7 +919,7 @@ func extractGatewayPrivateLinkConfigurations(ctx context.Context, d *transform.T
 			}
 			if i.ApplicationGatewayPrivateLinkConfigurationProperties != nil {
 				objectMap["properties"] = i.ApplicationGatewayPrivateLinkConfigurationProperties
-				objectMap["provisioning_state"] = i.ApplicationGatewayPrivateLinkConfigurationProperties.ProvisioningState
+				objectMap["provisioning_state"] = i.ProvisioningState
 			}
 			properties = append(properties, objectMap)
 		}
@@ -933,8 +933,8 @@ func extractGatewayPrivateEndpointConnections(ctx context.Context, d *transform.
 	gateway := d.HydrateItem.(network.ApplicationGateway)
 	var properties []map[string]interface{}
 
-	if gateway.ApplicationGatewayPropertiesFormat.PrivateEndpointConnections != nil {
-		for _, i := range *gateway.ApplicationGatewayPropertiesFormat.PrivateEndpointConnections {
+	if gateway.PrivateEndpointConnections != nil {
+		for _, i := range *gateway.PrivateEndpointConnections {
 			objectMap := make(map[string]interface{})
 			if i.ID != nil {
 				objectMap["id"] = i.ID
@@ -947,7 +947,7 @@ func extractGatewayPrivateEndpointConnections(ctx context.Context, d *transform.
 			}
 			if i.ApplicationGatewayPrivateEndpointConnectionProperties != nil {
 				objectMap["properties"] = i.ApplicationGatewayPrivateEndpointConnectionProperties
-				objectMap["provisioning_state"] = i.ApplicationGatewayPrivateEndpointConnectionProperties.ProvisioningState
+				objectMap["provisioning_state"] = i.ProvisioningState
 			}
 			properties = append(properties, objectMap)
 		}

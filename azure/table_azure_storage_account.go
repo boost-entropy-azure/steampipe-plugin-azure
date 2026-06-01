@@ -971,7 +971,7 @@ func getAzureStorageAccountBlobServiceLogging(ctx context.Context, d *plugin.Que
 		}
 
 		client := accounts.New()
-		client.Client.Authorizer = storageAuth
+		client.Authorizer = storageAuth
 		client.BaseURI = session.StorageEndpointSuffix
 
 		resp, err := client.GetServiceProperties(ctx, *accountData.Name)
@@ -1057,7 +1057,7 @@ func getAzureStorageAccountQueueProperties(ctx context.Context, d *plugin.QueryD
 			}
 
 			queuesClient := queues.New()
-			queuesClient.Client.Authorizer = storageAuth
+			queuesClient.Authorizer = storageAuth
 			queuesClient.BaseURI = session.StorageEndpointSuffix
 
 			// using 	"github.com/tombuildsstuff/giovanni/storage/2018-11-09/queue/queues" to logging details
@@ -1332,21 +1332,21 @@ func storageAccountEncryptionScopeMap(scope storage.EncryptionScope) map[string]
 		objMap["Type"] = scope.Type
 	}
 	if scope.EncryptionScopeProperties != nil {
-		if scope.EncryptionScopeProperties.Source != "" {
-			objMap["Source"] = scope.EncryptionScopeProperties.Source
+		if scope.Source != "" {
+			objMap["Source"] = scope.Source
 		}
-		if scope.EncryptionScopeProperties.State != "" {
-			objMap["State"] = scope.EncryptionScopeProperties.State
+		if scope.State != "" {
+			objMap["State"] = scope.State
 		}
-		if scope.EncryptionScopeProperties.CreationTime != nil {
-			objMap["CreationTime"] = scope.EncryptionScopeProperties.CreationTime
+		if scope.CreationTime != nil {
+			objMap["CreationTime"] = scope.CreationTime
 		}
-		if scope.EncryptionScopeProperties.LastModifiedTime != nil {
-			objMap["LastModifiedTime"] = scope.EncryptionScopeProperties.LastModifiedTime
+		if scope.LastModifiedTime != nil {
+			objMap["LastModifiedTime"] = scope.LastModifiedTime
 		}
-		if scope.EncryptionScopeProperties.KeyVaultProperties != nil {
-			if scope.EncryptionScopeProperties.KeyVaultProperties.KeyURI != nil {
-				objMap["KeyURI"] = scope.EncryptionScopeProperties.KeyVaultProperties.KeyURI
+		if scope.KeyVaultProperties != nil {
+			if scope.KeyVaultProperties.KeyURI != nil {
+				objMap["KeyURI"] = scope.KeyVaultProperties.KeyURI
 			}
 		}
 	}

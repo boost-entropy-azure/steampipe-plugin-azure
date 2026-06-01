@@ -148,7 +148,7 @@ type RestorableLocationResource struct {
 func mapRestorableLocations(ctx context.Context, d *transform.TransformData) (interface{}, error) {
 	data := d.HydrateItem.(documentdb.RestorableDatabaseAccountGetResult)
 
-	restorableLocations := *data.RestorableDatabaseAccountProperties.RestorableLocations
+	restorableLocations := *data.RestorableLocations
 
 	if len(restorableLocations) < 1 {
 		return nil, nil
