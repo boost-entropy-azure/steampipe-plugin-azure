@@ -3,9 +3,9 @@ package azure
 import (
 	"context"
 
-	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
-	"github.com/turbot/steampipe-plugin-sdk/v5/plugin/transform"
-	"github.com/turbot/steampipe-plugin-sdk/v5/rate_limiter"
+	"github.com/turbot/steampipe-plugin-sdk/v6/plugin"
+	"github.com/turbot/steampipe-plugin-sdk/v6/plugin/transform"
+	"github.com/turbot/steampipe-plugin-sdk/v6/rate_limiter"
 )
 
 const pluginName = "steampipe-plugin-azure"
@@ -131,6 +131,15 @@ func Plugin(ctx context.Context) *plugin.Plugin {
 				BucketSize: 50,
 				Scope:      []string{"connection", "subscription", "region"},
 				Where:      "service = 'Microsoft.Insights' and action = 'activityLogs/read'",
+			},
+			// https://learn.microsoft.com/en-us/azure/governance/resource-graph/concepts/guidance-for-throttled-requests
+			// 15 requests/5s per subscription, 150 requests/5s per tenant
+			{
+				Name:       "azure_resource_graph",
+				FillRate:   3,
+				BucketSize: 15,
+				Scope:      []string{"connection", "subscription"},
+				Where:      "service = 'Microsoft.ResourceGraph' and action = 'resources/read'",
 			},
 		},
 		TableMap: map[string]*plugin.Table{
@@ -272,6 +281,7 @@ func Plugin(ctx context.Context) *plugin.Plugin {
 			"azure_recovery_services_vault":                                tableAzureRecoveryServicesVault(ctx),
 			"azure_redis_cache":                                            tableAzureRedisCache(ctx),
 			"azure_resource":                                               tableAzureResourceResource(ctx),
+			"azure_resource_graph":                                         tableAzureResourceGraph(ctx),
 			"azure_resource_group":                                         tableAzureResourceGroup(ctx),
 			"azure_resource_link":                                          tableAzureResourceLink(ctx),
 			"azure_role_assignment":                                        tableAzureIamRoleAssignment(ctx),

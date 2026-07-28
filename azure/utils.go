@@ -3,13 +3,14 @@ package azure
 import (
 	"context"
 	"reflect"
+	"regexp"
 	"strings"
 	"time"
 
 	"github.com/Azure/azure-sdk-for-go/profiles/latest/consumption/mgmt/consumption"
 	"github.com/Azure/go-autorest/autorest/date"
 	"github.com/turbot/go-kit/types"
-	"github.com/turbot/steampipe-plugin-sdk/v5/plugin/transform"
+	"github.com/turbot/steampipe-plugin-sdk/v6/plugin/transform"
 )
 
 //// TRANSFORM FUNCTIONS
@@ -29,14 +30,18 @@ func idToAkas(ctx context.Context, d *transform.TransformData) (interface{}, err
 	return akas, nil
 }
 
+// armIDResourceGroupRegexp matches Azure ARM IDs and captures the resource group name.
+// Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}[/...]
+var armIDResourceGroupRegexp = regexp.MustCompile(`(?i)/subscriptions/[^/]+/resourceGroups/([^/]+)`)
+
 func extractResourceGroupFromID(ctx context.Context, d *transform.TransformData) (interface{}, error) {
 	id := types.SafeString(d.Value)
 
-	// Common resource properties
-	splitID := strings.Split(id, "/")
-	resourceGroup := splitID[4]
-	resourceGroup = strings.ToLower(resourceGroup)
-	return resourceGroup, nil
+	matches := armIDResourceGroupRegexp.FindStringSubmatch(id)
+	if len(matches) < 2 {
+		return nil, nil
+	}
+	return strings.ToLower(matches[1]), nil
 }
 
 // extractCDNProfileNameFromID extracts the CDN profile name from a resource ID of the form:
