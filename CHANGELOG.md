@@ -1,3 +1,21 @@
+## v1.14.1 [2026-09-14]
+
+_Bug fixes_
+
+- Fixed the Steampipe Anywhere Postgres FDW builds for Linux AMD64, which in v1.14.0 were linked against glibc 2.38 and failed to load on distributions with older glibc versions, such as Ubuntu 22.04 and Debian 12, with `version 'GLIBC_2.38' not found`. The Linux AMD64 Postgres FDW and SQLite extension artifacts are now built on Ubuntu 22.04. ([turbot/steampipe-workflows#110](https://github.com/turbot/steampipe-workflows/pull/110))
+
+## v1.14.0 [2026-09-14]
+
+_What's new?_
+
+- New tables added
+  - [azure_reservations_reservation](https://hub.steampipe.io/plugins/turbot/azure/tables/azure_reservations_reservation) ([#985](https://github.com/turbot/steampipe-plugin-azure/pull/985)) (Thanks [@jmapro](https://github.com/jmapro) for the contribution!)
+  - [azure_reservations_reservation_order](https://hub.steampipe.io/plugins/turbot/azure/tables/azure_reservations_reservation_order) ([#985](https://github.com/turbot/steampipe-plugin-azure/pull/985)) (Thanks [@jmapro](https://github.com/jmapro) for the contribution!)
+
+_Bug fixes_
+
+- Fixed the `azure_postgresql_flexible_server` table to skip the `flexible_server_configurations` hydrate call when the server is in the `Stopping`, `Stopped`, or `Updating` state, since Azure rejects the call with a `ServerStoppedError` in those states. ([#1015](https://github.com/turbot/steampipe-plugin-azure/pull/1015)) (Thanks [@hakuno](https://github.com/hakuno) for the contribution!)
+
 ## v1.13.0 [2026-07-28]
 
 _What's new?_
